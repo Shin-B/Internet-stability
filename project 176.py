@@ -1,0 +1,23 @@
+import speedtest
+import matplotlib.pyplot as plt
+import time
+
+list_download_speed=[]
+list_upload_speed=[]
+
+for i in range (0,5):
+    obj=speedtest.Speedtest()
+    download_speed=round(obj.download()/1000000,2)
+    list_download_speed.append(download_speed)
+    upload_speed=round(obj.upload()/1000000,2)
+    list_upload_speed.append(upload_speed)
+    time.sleep(60)
+    print(list_download_speed)
+    print(list_upload_speed)
+
+x=[1,2,3,4,5]
+plt.plot(x,list_download_speed,label="Download Speed")
+plt.plot(x,list_upload_speed,label="Upload Speed")
+plt.title("Speed")
+plt.legend()
+plt.show()
